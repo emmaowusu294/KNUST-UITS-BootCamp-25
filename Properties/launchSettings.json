@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "BootCamp25": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
