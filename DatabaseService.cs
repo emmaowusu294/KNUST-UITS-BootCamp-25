@@ -133,5 +133,51 @@ namespace BootCamp25
         }
 
 
+        public List<string> GetAllEnrollmentsDetailed()
+        {
+            List<string> result = new List<string>();
+
+            using (SqlConnection conn = new SqlConnection(_connStr))
+            {
+                string sql = @"
+            SELECT 
+                S.StudentID,
+                S.FirstName + ' ' + S.LastName AS StudentName,
+                C.CourseName,
+                T.FirstName + ' ' + T.LastName AS TeacherName,
+                T.Department,
+                CL.Schedule,
+                E.EnrollmentDate
+            FROM ENROLLMENT E
+            INNER JOIN STUDENT S ON E.StudentID = S.StudentID
+            INNER JOIN COURSE C ON E.CourseID = C.CourseID
+            INNER JOIN CLASS CL ON C.CourseID = CL.CourseID
+            INNER JOIN TEACHER T ON CL.TeacherID = T.TeacherID
+            ORDER BY S.StudentID;";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string student = reader["StudentName"].ToString();
+                    string course = reader["CourseName"].ToString();
+                    string teacher = reader["TeacherName"].ToString();
+                    string dept = reader["Department"].ToString();
+                    string schedule = reader["Schedule"].ToString();
+                    string date = Convert.ToDateTime(reader["EnrollmentDate"]).ToShortDateString();
+
+                    result.Add($"{student} is enrolled in '{course}' taught by {teacher} ({dept}) on {schedule} — enrolled on {date}");
+                }
+
+                reader.Close();
+            }
+
+            return result;
+        }
+
+
+
     }
 }

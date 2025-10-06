@@ -368,6 +368,13 @@ dbService.EnrollStudent(1, 1);
 Console.WriteLine("✅ Sample records added successfully!");
 */
 
-dbService.GetAllStudents();
+//dbService.GetAllStudents();
 
-Console.WriteLine("\n Students retrieved successfully!");
+//Console.WriteLine("\n Students retrieved successfully!");
+
+var enrollments = dbService.GetAllEnrollmentsDetailed();
+
+foreach (var record in enrollments)
+{
+    Console.WriteLine(record);
+}
