@@ -139,21 +139,28 @@ namespace BootCamp25
 
             using (SqlConnection conn = new SqlConnection(_connStr))
             {
-                string sql = @"
-            SELECT 
-                S.StudentID,
-                S.FirstName + ' ' + S.LastName AS StudentName,
-                C.CourseName,
-                T.FirstName + ' ' + T.LastName AS TeacherName,
-                T.Department,
-                CL.Schedule,
-                E.EnrollmentDate
-            FROM ENROLLMENT E
-            INNER JOIN STUDENT S ON E.StudentID = S.StudentID
-            INNER JOIN COURSE C ON E.CourseID = C.CourseID
-            INNER JOIN CLASS CL ON C.CourseID = CL.CourseID
-            INNER JOIN TEACHER T ON CL.TeacherID = T.TeacherID
-            ORDER BY S.StudentID;";
+                            string sql = @"
+                SELECT 
+                    S.StudentID,
+                    S.FirstName + ' ' + S.LastName AS StudentName,
+                    C.CourseName,
+                    T.FirstName + ' ' + T.LastName AS TeacherName,
+                    T.Department,
+                    CL.Schedule,
+                    E.EnrollmentDate
+                FROM ENROLLMENT E
+                INNER JOIN STUDENT S ON E.StudentID = S.StudentID
+                INNER JOIN COURSE C ON E.CourseID = C.CourseID
+                INNER JOIN (
+                    SELECT CourseID, MIN(Schedule) AS Schedule
+                    FROM CLASS
+                    GROUP BY CourseID
+                ) CL ON C.CourseID = CL.CourseID
+                INNER JOIN TEACHER T ON T.TeacherID = (
+                    SELECT TOP 1 TeacherID FROM CLASS WHERE CLASS.CourseID = C.CourseID
+                )
+                ORDER BY S.StudentID;";
+
 
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 conn.Open();
@@ -178,6 +185,38 @@ namespace BootCamp25
         }
 
 
+        public void UpdateStudent(int id, string firstName, string lastName, int age)
+        {
+            using (SqlConnection conn = new SqlConnection(_connStr))
+            {
+                string query = "UPDATE STUDENT SET FirstName=@FirstName, LastName=@LastName, Age=@Age WHERE StudentID=@ID";
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@FirstName", firstName);
+                cmd.Parameters.AddWithValue("@LastName", lastName);
+                cmd.Parameters.AddWithValue("@Age", age);
+                cmd.Parameters.AddWithValue("@ID", id);
+
+                conn.Open();
+                int rows = cmd.ExecuteNonQuery();
+                Console.WriteLine(rows > 0 ? "✅ Student updated successfully!" : "⚠️ Student not found.");
+            }
+        }
+
+        // ❌ DELETE: Remove a student by ID
+        public void DeleteStudent(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(_connStr))
+            {
+                string query = "DELETE FROM STUDENT WHERE StudentID=@ID";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ID", id);
+
+                conn.Open();
+                int rows = cmd.ExecuteNonQuery();
+                Console.WriteLine(rows > 0 ? "🗑️ Student deleted successfully!" : "⚠️ Student not found.");
+            }
+        }
 
     }
 }

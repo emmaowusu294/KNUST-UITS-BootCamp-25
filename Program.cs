@@ -372,9 +372,12 @@ Console.WriteLine("✅ Sample records added successfully!");
 
 //Console.WriteLine("\n Students retrieved successfully!");
 
-var enrollments = dbService.GetAllEnrollmentsDetailed();
+//var enrollments = dbService.GetAllEnrollmentsDetailed();
 
-foreach (var record in enrollments)
-{
-    Console.WriteLine(record);
-}
+//foreach (var record in enrollments)
+//{
+//    Console.WriteLine(record);
+//}
+
+//dbService.UpdateStudent(8, "Elizabeth", "Keen", 8);
+dbService.DeleteStudent(1);
