@@ -1,7 +1,16 @@
+using BOOTSHOP.Models.Data.BOOTSHOPContext;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Registering the DbContext with a connection string
+builder.Services.AddDbContext<BootshopContext>(o =>
+{
+    o.UseSqlServer(builder.Configuration.GetConnectionString("BootshopConnection"));
+});
 
 var app = builder.Build();
 
