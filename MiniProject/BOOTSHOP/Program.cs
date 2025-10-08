@@ -1,4 +1,5 @@
 using BOOTSHOP.Models.Data.BOOTSHOPContext;
+using BOOTSHOP.Models.Data.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,9 @@ builder.Services.AddDbContext<BootshopContext>(o =>
 {
     o.UseSqlServer(builder.Configuration.GetConnectionString("BootshopConnection"));
 });
+
+//Registering SERVICE
+builder.Services.AddScoped<ProductCategoryService>();
 
 var app = builder.Build();
 
