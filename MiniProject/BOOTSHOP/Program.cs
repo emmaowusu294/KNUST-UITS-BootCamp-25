@@ -13,8 +13,11 @@ builder.Services.AddDbContext<BootshopContext>(o =>
     o.UseSqlServer(builder.Configuration.GetConnectionString("BootshopConnection"));
 });
 
-//Registering SERVICE
+//Registering ProductCategoryService
 builder.Services.AddScoped<ProductCategoryService>();
+
+//Registering ShopService
+builder.Services.AddScoped<ShopService>();
 
 var app = builder.Build();
 

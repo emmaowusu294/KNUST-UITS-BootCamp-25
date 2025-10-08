@@ -108,4 +108,6 @@ public partial class BootshopContext : DbContext
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
 public DbSet<BOOTSHOP.Models.Data.ViewModels.ProductCategoryViewModel> ProductCategoryViewModel { get; set; } = default!;
+
+public DbSet<BOOTSHOP.Models.Data.ViewModels.ShopViewModel> ShopViewModel { get; set; } = default!;
 }
