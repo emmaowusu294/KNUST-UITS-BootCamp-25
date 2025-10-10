@@ -5,17 +5,17 @@ namespace WebApplication1.Controllers
 {
     public class ScoresController : Controller
     {
-
         private DatabaseService _dbService;
 
-        public ScoresController(DatabaseService dbService)
+        public ScoresController()
         {
-            _dbService = dbService;
+            _dbService = new DatabaseService();
         }
 
         public IActionResult Index()
         {
-            return View();
+            List<StudentScores> scores = _dbService.GetStudentScores();
+            return View(scores);
         }
     }
 }

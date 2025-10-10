@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
 
 namespace ConsoleApp2
 {
@@ -10,210 +14,212 @@ namespace ConsoleApp2
 
         public DatabaseService()
         {
-            _connStr = @"Server=4TS\SQLEXPRESS;Database=School;Trusted_Connection=True;TrustServerCertificate=True";
+            _connStr = @"Server=4Ts\SQLEXPRESS;Database=School;Trusted_Connection=True;TrustServerCertificate=True";
         }
 
-        // 🔹 ADD STUDENT
-        public void AddStudent(string fname, string lname, char gender, DateOnly birthDate)
+        public void AddStudent(string fname, string lname,
+            char gender, DateOnly birthDate)
         {
-            using (SqlConnection conn = new SqlConnection(_connStr))
-            {
-                string sql = @"INSERT INTO Student (FirstName, LastName, Gender, BirthDate) 
-                               VALUES (@fname, @lname, @gender, @bdate)";
+            SqlConnection conn = new SqlConnection(_connStr);
+            string sql = @"INSERT INTO Student (FirstName, LastName, Gender, BirthDate) 
+                            VALUES (@fname, @lname, @gender, @bdate)";
 
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@fname", fname);
-                cmd.Parameters.AddWithValue("@lname", lname);
-                cmd.Parameters.AddWithValue("@gender", gender);
-                cmd.Parameters.AddWithValue("@bdate", birthDate);
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@fname", fname);
+            cmd.Parameters.AddWithValue("@lname", lname);
+            cmd.Parameters.AddWithValue("@gender", gender);
+            cmd.Parameters.AddWithValue("@bdate", birthDate);
 
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-
-            Console.WriteLine("✅ Student added successfully");
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            Console.WriteLine("Student added successfully");
         }
 
-        // 🔹 UPDATE STUDENT
-        public void UpdateStudent(int id, string fname, string lname, char gender, DateOnly birthDate)
-        {
-            using (SqlConnection conn = new SqlConnection(_connStr))
-            {
-                string sql = @"UPDATE Student 
-                               SET FirstName = @fname, LastName = @lname, Gender = @gender, BirthDate = @bdate 
-                               WHERE StudentId = @id";
-
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@fname", fname);
-                cmd.Parameters.AddWithValue("@lname", lname);
-                cmd.Parameters.AddWithValue("@gender", gender);
-                cmd.Parameters.AddWithValue("@bdate", birthDate);
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-
-            Console.WriteLine(" Student updated successfully");
-        }
-
-        // 🔹 GET ALL STUDENTS
         public List<Student> GetStudents()
         {
             List<Student> students = new List<Student>();
 
-            using (SqlConnection conn = new SqlConnection(_connStr))
+            SqlConnection conn = new SqlConnection(_connStr);
+            string sql = "SELECT * FROM Student";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            conn.Open();
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
             {
-                string sql = "SELECT * FROM Student";
-                SqlCommand cmd = new SqlCommand(sql, conn);
+                Student temp = new Student();
+                temp.StudentId = reader.GetInt32(0);
+                temp.FirstName = reader.GetString(1);
+                temp.LastName = reader.GetString(2);
+                temp.Gender = reader.GetString(3)[0];
+                temp.BirthDate = DateOnly.FromDateTime(reader.GetDateTime(4));
 
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Student temp = new Student()
-                    {
-                        StudentId = reader.GetInt32(0),
-                        FirstName = reader.GetString(1),
-                        LastName = reader.GetString(2),
-                        Gender = reader.GetString(3)[0],
-                        BirthDate = DateOnly.FromDateTime(reader.GetDateTime(4))
-                    };
-
-                    students.Add(temp);
-                }
+                students.Add(temp);
             }
+
+            conn.Close();
 
             return students;
+
+
         }
 
-        // 🔹 GET STUDENT BY ID
-        public Student GetStudentById(int id)
+        public Student GetStudent(int id)
         {
-            Student student = null;
+            Student student = new Student();
 
-            using (SqlConnection conn = new SqlConnection(_connStr))
+            SqlConnection conn = new SqlConnection(_connStr);
+            string sql = "SELECT * FROM Student Where studentId = @Id";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            conn.Open();
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
             {
-                string sql = "SELECT * FROM Student WHERE StudentId = @id";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@id", id);
+                Student temp = new Student();
+                temp.StudentId = reader.GetInt32(0);
+                temp.FirstName = reader.GetString(1);
+                temp.LastName = reader.GetString(2);
+                temp.Gender = reader.GetString(3)[0];
+                temp.BirthDate = DateOnly.FromDateTime(reader.GetDateTime(4));
 
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    student = new Student()
-                    {
-                        StudentId = reader.GetInt32(0),
-                        FirstName = reader.GetString(1),
-                        LastName = reader.GetString(2),
-                        Gender = reader.GetString(3)[0],
-                        BirthDate = DateOnly.FromDateTime(reader.GetDateTime(4))
-                    };
-                }
+                student = temp;
             }
+
+            conn.Close();
 
             return student;
+
+
         }
 
-        //DELETE STUDENTS
-
-        public void DeleteStudent(int id)
+        public void updateStudent(Student student)
         {
-            using (SqlConnection conn = new SqlConnection(_connStr))
-            {
-                string sql = @"DELETE FROM Student WHERE StudentId = @StudentId";
+            SqlConnection conn = new SqlConnection(_connStr);
+            string sql = @"UPDATE Student set FirstName=@fname,
+                    LastName=@lname, Gender=@gender,
+                    BirthDate=@bdate WHERE StudentId=@studentId";
 
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@StudentId", id);
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@fname", student.FirstName);
+            cmd.Parameters.AddWithValue("@lname", student.LastName);
+            cmd.Parameters.AddWithValue("@gender", student.Gender);
+            cmd.Parameters.AddWithValue("@bdate", student.BirthDate);
+            cmd.Parameters.AddWithValue("@studentId", student.StudentId);
 
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            Console.WriteLine("Student updated successfully");
+        }
 
+        public void deleteStudent(int id)
+        {
+            SqlConnection conn = new SqlConnection(_connStr);
+            string sql = @"DELETE FROM Student WHERE 
+                StudentId=@studentId";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@studentId", id);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
             Console.WriteLine("Student deleted successfully");
         }
 
-        // Year Filter
         public List<Student> FilterStudents(int year)
         {
             List<Student> students = new List<Student>();
 
-            using (SqlConnection conn = new SqlConnection(_connStr))
+            SqlConnection conn = new SqlConnection(_connStr);
+            string sql = "SELECT * FROM Student Where YEAR(BIRTHDATE) > @year";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@year", year);
+
+            conn.Open();
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
             {
-                string sql = "SELECT * FROM Student Where YEAR(BIRTHDATE) > @year";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@year", year);
+                Student temp = new Student();
+                temp.StudentId = reader.GetInt32(0);
+                temp.FirstName = reader.GetString(1);
+                temp.LastName = reader.GetString(2);
+                temp.Gender = reader.GetString(3)[0];
+                temp.BirthDate = DateOnly.FromDateTime(reader.GetDateTime(4));
 
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Student temp = new Student()
-                    {
-                        StudentId = reader.GetInt32(0),
-                        FirstName = reader.GetString(1),
-                        LastName = reader.GetString(2),
-                        Gender = reader.GetString(3)[0],
-                        BirthDate = DateOnly.FromDateTime(reader.GetDateTime(4))
-                    };
-
-                    students.Add(temp);
-                }
+                students.Add(temp);
             }
 
+            conn.Close();
+
             return students;
+
+
         }
 
-        public List<StudentScores> GetStudentsScores()
+
+        public List<StudentScores> GetStudentScores()
         {
             List<StudentScores> scores = new List<StudentScores>();
 
-            using (SqlConnection conn = new SqlConnection(_connStr))
+            SqlConnection conn = new SqlConnection(_connStr);
+            string sql = @"Select st.STUDENTID, st.FIRSTNAME, st.LASTNAME, 
+                      cs.COURSENAME, sc.MARK, sc.GRADE 
+                      from student st 
+                      join SCORES sc on st.STUDENTID = sc.STUDENTID
+                      join COURSE cs on sc.COURSEID = cs.COURSEID";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            conn.Open();
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
             {
-                string sql = @"select st.STUDENTID, st.FIRSTNAME, st.LASTNAME,
-                              cs.COURSENAME, sc.MARK, sc.GRADE
-                                from student st
-                                join SCORES sc on st.STUDENT = sc.STUDENTID
-                                join COURSE cs on sc.COURSEID = cs.COURSEID";
-                SqlCommand cmd = new SqlCommand(sql, conn);
+                StudentScores temp = new StudentScores();
+                temp.StudentId = reader.GetInt32(0);
+                temp.FirstName = reader.GetString(1);
+                temp.LastName = reader.GetString(2);
+                temp.Course = reader.GetString(3);
+                temp.Mark = reader.GetDecimal(4);
+                temp.Grade = reader.GetString(5);
 
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    StudentScores temp = new StudentScores()
-                    {
-                        StudentId = reader.GetInt32(0),
-                        FirstName = reader.GetString(1),
-                        LastName = reader.GetString(2),
-                        Course = reader.GetString(3),
-                        Mark = reader.GetDecimal(4),
-                        Grade = reader.GetString(5)
-                    };
-
-                    scores.Add(temp);
-                }
+                scores.Add(temp);
             }
 
+            conn.Close();
+
             return scores;
+
+
         }
+
     }
 
-
-
-    // 🔹 STUDENT MODEL
     public class Student
     {
-        public int? StudentId { get; set; }
+        public int StudentId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public char Gender { get; set; }
+        public Char Gender { get; set; }
         public DateOnly BirthDate { get; set; }
+    }
+
+    public class YearFilter
+    {
+        public int StartingYear { get; set; }
     }
 
     public class StudentScores
