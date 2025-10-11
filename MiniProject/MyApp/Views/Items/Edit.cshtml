@@ -1,0 +1,21 @@
+﻿@model MyApp.Models.Item
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h3>Edit the Item</h3>
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <label for="Name" class="control-label">Name</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Price" class="control-label">Price</label>
+        <input type="number" asp-for="Price" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
+</form>

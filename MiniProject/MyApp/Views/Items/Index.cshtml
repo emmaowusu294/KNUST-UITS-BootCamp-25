@@ -1,0 +1,40 @@
+﻿@model List<MyApp.Models.Item>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <div class="row align-items-center justify-content-between ">
+        <div class="col">
+            <h3>Index</h3>
+        </div>
+        <div class="col">
+            <a asp-action="Create" class="btn btn-success">Create New Item</a>
+        </div>
+    
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Serial Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Price.ToString("N2") $</td>
+                <td>@item.SerialNumber?.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
