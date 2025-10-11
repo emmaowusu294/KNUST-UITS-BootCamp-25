@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyApp.Data;
 
@@ -21,19 +22,24 @@ namespace MyApp.Controllers
         public async Task<IActionResult> Index()
         {
             // Retrieve all items from the database and pass them to the view
-            var item = await _context.Item.Include(s => s.SerialNumber).ToListAsync();
+            var item = await _context.Item.Include(s => s.SerialNumber)
+                                                    .Include(c => c.Category)
+                                                    .Include(ic => ic.ItemClients)
+                                                     .ThenInclude(c => c.Client)
+                                                    .ToListAsync();
             return View(item);
         }
 
         public IActionResult Create()
         {
+            ViewData["Categories"] = new SelectList(_context.Categories, "Id", "Name");
             return View();
         }
 
         // POST: Items/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price")] Models.Item item)
+        public async Task<IActionResult> Create([Bind("Id,Name,Price,CategoryId")] Models.Item item)
         {
             if (ModelState.IsValid)
             {
@@ -52,13 +58,14 @@ namespace MyApp.Controllers
         // Get Edit
         public async Task<IActionResult> Edit(int id)
         {
+            ViewData["Categories"] = new SelectList(_context.Categories, "Id", "Name");
             var item = await _context.Item.FirstOrDefaultAsync(x => x.Id == id);
             return View(item);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price")] Models.Item item)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,CategoryId")] Models.Item item)
         {
             if (ModelState.IsValid)
             {
