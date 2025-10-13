@@ -1,4 +1,5 @@
-﻿@model List<ConsoleApp2.Student>;
+﻿@using WebApplication1.Models.Data.SCHOOLContext
+@model List<Student>;
 
 
 <div class="container p-3">
@@ -33,19 +34,19 @@
         @for(int i =0; i < Model.Count; i++)
         {
             <tr>
-                <td>@Model[i].StudentId</td>
-                <td>@Model[i].FirstName</td>
-                <td>@Model[i].LastName</td>
+                <td>@Model[i].Studentid</td>
+                <td>@Model[i].Firstname</td>
+                <td>@Model[i].Lastname</td>
                 <td>@Model[i].Gender</td>
-                <td>@Model[i].BirthDate</td>
+                <td>@Model[i].Birthdate</td>
                 <td>
 
-                    <a href="/Student/Edit/@Model[i].StudentId" 
+                    <a href="/Student/Edit/@Model[i].Studentid" 
                         class="btn btn-outline-warning btn-sm">
                         Edit
                     </a>
 
-                    <a href="/Student/Delete/@Model[i].StudentId" 
+                    <a href="/Student/Delete/@Model[i].Studentid" 
                         class="btn btn-outline-danger btn-sm">
                         Delete
                     </a>

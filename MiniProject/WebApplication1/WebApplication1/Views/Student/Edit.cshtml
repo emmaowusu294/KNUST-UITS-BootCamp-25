@@ -1,7 +1,8 @@
-﻿@model ConsoleApp2.Student
+﻿@using WebApplication1.Models.Data.SCHOOLContext
+@model Student
 
 <form method="post" action="Edit">
-    <input type="hidden" asp-for="StudentId" />
+    <input type="hidden" asp-for="Studentid" />
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2>Edit Student</h2>
@@ -9,11 +10,11 @@
         </div>
         <div class="mb-3">
             <label for="FirstName" class="form-label">First Name</label>
-            <input class="form-control" asp-for="FirstName"/>
+            <input class="form-control" asp-for="Firstname"/>
         </div>
         <div class="mb-3">
             <label for="LastName" class="form-label">Last Name</label>
-            <input class="form-control" asp-for="LastName" />
+            <input class="form-control" asp-for="Lastname" />
         </div>
 
         <div class="mb-3">
@@ -22,7 +23,7 @@
         </div>
         <div class="mb-3">
             <label for="BirthDate" class="form-label">BirthDate</label>
-            <input class="form-control" asp-for="BirthDate"/>
+            <input class="form-control" asp-for="Birthdate"/>
         </div>
 
         <button class="btn btn-outline-primary">Submit</button>
