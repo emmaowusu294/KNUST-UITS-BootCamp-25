@@ -48,8 +48,6 @@
       </div>
     </section>
 
-
-
     <!-- Image and About me -->
     <section
       class="container my-5 d-flex justify-content-center align-items-center"
@@ -98,7 +96,7 @@
 
           <!-- I love these -->
           <div
-            class="d-flex flex-column justify-content-between gap-2"
+            class="d-flex flex-column justify-content-between gap-2 ps-3"
             style="height: 70%"
           >
             <!-- I love code -->
@@ -177,7 +175,143 @@
       </div>
     </section>
 
+    <section
+      class="container my-5 d-flex justify-content-center align-items-center"
+    >
+      <div
+        class="d-flex flex-column flex-lg-row justify-content-center align-items-center align-items-lg-stretch gap-4"
+      >
+        <!-- Profile Card -->
+        <div
+          class="card shadow-sm flex-fill text-center p-4 border-0"
+          style="width: 90%; max-width: 800px"
+          data-aos="fade-up"
+        >
+          <div
+            class="card-header bg-white border-0 d-flex justify-content-center align-items-center gap-2"
+          >
+            <span class="text-primary">
+              <i class="bi bi-person-circle fs-4"></i>
+            </span>
+            <h5 class="fw-semibold mb-0">My Pretty Face</h5>
+          </div>
+          <img
+            src="./assets/pic.jpg"
+            class="card-img-bottom img-fluid rounded"
+            alt="Profile photo"
+          />
+        </div>
 
+        <!-- About Me Card -->
+        <div
+          class="card shadow-sm flex-fill border-0"
+          style="width: 90%; max-width: 800px"
+          data-aos="fade-up"
+        >
+          <div
+            class="card-header bg-white border-0 d-flex align-items-center gap-2"
+          >
+            <span class="text-primary">
+              <i class="bi bi-person-raised-hand fs-4"></i>
+            </span>
+            <h5 class="fw-semibold mb-0">About Me</h5>
+          </div>
+
+          <div class="card-body d-flex flex-column gap-3">
+            <!-- I love Code -->
+            <div class="d-flex align-items-center p-2 bg-light border rounded">
+              <div
+                class="position-relative bg-primary rounded-circle d-flex justify-content-center align-items-center"
+                style="width: 40px; height: 40px"
+              >
+                <i class="bi bi-code-slash text-white"></i>
+              </div>
+              <div class="ms-2">
+                <p class="mb-0 fw-semibold">I love Code</p>
+                <p class="mb-0 text-muted small">
+                  Passionate about creating elegant solutions
+                </p>
+              </div>
+            </div>
+
+            <!-- Building Dreams -->
+            <div class="d-flex align-items-center p-2 bg-light border rounded">
+              <div
+                class="position-relative bg-success rounded-circle d-flex justify-content-center align-items-center"
+                style="width: 40px; height: 40px"
+              >
+                <i class="bi bi-rocket-takeoff-fill text-white"></i>
+              </div>
+              <div class="ms-2">
+                <p class="mb-0 fw-semibold">Building Dreams</p>
+                <p class="mb-0 text-muted small">
+                  Turning ideas into reality through technology
+                </p>
+              </div>
+            </div>
+
+            <!-- Learning Daily -->
+            <div class="d-flex align-items-center p-2 bg-light border rounded">
+              <div
+                class="position-relative bg-primary rounded-circle d-flex justify-content-center align-items-center"
+                style="width: 40px; height: 40px"
+              >
+                <i class="bi bi-mortarboard-fill text-white"></i>
+              </div>
+              <div class="ms-2">
+                <p class="mb-0 fw-semibold">Learning Daily</p>
+                <p class="mb-0 text-muted small">
+                  Continuous growth and skill development
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="container my-5 d-flex justify-content-center align-items-center bg-success"
+    >
+      <!-- Flex Container  -->
+      <div
+        class="d-flex flex-column flex-lg-row justify-content-center align-items-center align-items-lg-stretch"
+      >
+        <!-- First Card  -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              This is a wider card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <p class="card-text">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </p>
+          </div>
+          <img src="./assets/setup.jpg" class="card-img-bottom" alt="..." />
+        </div>
+
+        <!-- Second Card  -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              This is a wider card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <p class="card-text">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </p>
+          </div>
+          <img src="./assets/code.jpg" class="card-img-bottom" alt="..." />
+        </div>
+      </div>
+    </section>
+
+    <!-- Using Bootstrap's Card Component -->
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -187,12 +321,11 @@
 
     <!-- scripts for aos  -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
       AOS.init({
         duration: 1000, // 🔸 animation lasts 1 second
         offset: 100, // 🔸 starts animation 100px before reaching the element
-        easing: "ease-in-out", // 🔸 smooth easing
+        easing: "ease-in", // 🔸 smooth easing
         once: true, // 🔸 only animate once (no repeat on scroll back)
       });
     </script>
