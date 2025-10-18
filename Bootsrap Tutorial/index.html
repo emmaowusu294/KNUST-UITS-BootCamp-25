@@ -13,6 +13,12 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
+
+    <!-- link for aos -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+
     <title>Bootstrap Crash Lesson</title>
   </head>
 
@@ -25,7 +31,7 @@
             <span class="text-warning fs-5"
               ><i class="bi bi-star-fill"></i
             ></span>
-            <h2 class="text-primary">4Ts - The Dreamer</h2>
+            <h2 class="my-card text-primary">4Ts - The Dreamer</h2>
             <span class="text-warning fs-5"
               ><i class="bi bi-star-fill"></i
             ></span>
@@ -42,123 +48,128 @@
       </div>
     </section>
 
+
+
     <!-- Image and About me -->
-
-    <section class="my-5">
-      <div class="container d-flex justify-content-center bg-success">
-        <!-- Flex container -->
+    <section
+      class="container my-5 d-flex justify-content-center align-items-center"
+    >
+      <!-- Flex container -->
+      <div
+        class="d-flex flex-column flex-lg-row justify-content-center align-items-center align-items-lg-stretch gap-4"
+      >
+        <!-- Profile Card -->
         <div
-          class="d-flex flex-column flex-lg-row justify-content-center align-items-stretch gap-4 w-100"
-          style="max-width: 1200px"
+          class="my-card bg-white py-4 rounded-4 shadow-sm flex-fill d-flex flex-column justify-content-center align-items-center text-center"
+          style="width: 90%; max-width: 800px"
+          data-aos="fade-up"
         >
-          <!-- Profile Card -->
           <div
-            class="bg-white py-3 rounded-4 shadow-sm flex-fill d-flex flex-column justify-content-center align-items-center text-center"
-            style="max-width: 600px"
+            class="d-flex justify-content-center align-items-center gap-2 mb-2"
           >
-            <div
-              class="d-flex justify-content-center align-items-center gap-2 mb-2"
-            >
-              <span class="text-primary">
-                <i class="bi bi-person-circle fs-4"></i>
-              </span>
-              <p class="fw-semibold mb-0 fs-3">My Pretty Face</p>
-            </div>
-
-            <div style="max-width: 500px">
-              <img
-                class="img-fluid rounded"
-                src="./assets/pic.jpg"
-                alt="Profile photo"
-              />
-            </div>
+            <span class="text-primary">
+              <i class="bi bi-person-circle fs-4"></i>
+            </span>
+            <p class="fw-semibold mb-0 fs-3">My Pretty Face</p>
           </div>
 
-          <!-- About Me Card -->
+          <div style="width: 90%">
+            <img
+              class="img-fluid rounded"
+              src="./assets/pic.jpg"
+              alt="Profile photo"
+            />
+          </div>
+        </div>
+
+        <!-- About Me Card -->
+        <div
+          class="my-card bg-white py-4 rounded-4 shadow-sm d-flex flex-column"
+          style="width: 90%; max-width: 800px"
+          data-aos="fade-up"
+        >
+          <!-- About Me Header -->
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <span class="text-primary">
+              <i class="bi bi-person-raised-hand fs-4"></i>
+            </span>
+            <p class="fw-semibold fs-3 mb-0">About Me</p>
+          </div>
+
+          <!-- I love these -->
           <div
-            class="bg-white py-3 rounded-4 shadow-sm flex-fill d-flex flex-column justify-content-start"
-            style="max-width: 600px"
+            class="d-flex flex-column justify-content-between gap-2"
+            style="height: 70%"
           >
-            <!-- About Me Header -->
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <span class="text-primary">
-                <i class="bi bi-person-raised-hand fs-4"></i>
-              </span>
-              <p class="fw-semibold fs-3 mb-0">About Me</p>
+            <!-- I love code -->
+            <div
+              class="d-flex gap-2 align-items-center p-2 bg-light border border-secondary border-opacity-10 rounded"
+              style="width: 95%"
+            >
+              <div
+                class="position-relative bg-primary rounded-circle"
+                style="width: 40px; height: 40px"
+              >
+                <span
+                  class="position-absolute top-50 start-50 translate-middle"
+                >
+                  <i class="bi bi-code-slash text-white"></i>
+                </span>
+              </div>
+
+              <div class="d-flex flex-column">
+                <p class="mb-0 fw-semibold">I love Code</p>
+                <p class="mb-0 fw-6 text-muted">
+                  Passionate about creating elegant solutions
+                </p>
+              </div>
             </div>
 
-            <!-- I love these -->
-            <div class="d-flex flex-column gap-3">
-              <!-- I love code -->
+            <!-- Building dreams -->
+            <div
+              class="d-flex gap-2 align-items-center p-2 bg-light border border-secondary border-opacity-10 rounded"
+              style="width: 95%"
+            >
               <div
-                class="d-flex gap-2 align-items-center p-2 bg-light border border-secondary border-opacity-10 rounded"
-                style="width: 95%"
+                class="position-relative bg-success rounded-circle"
+                style="width: 40px; height: 40px"
               >
-                <div
-                  class="position-relative bg-primary rounded-circle"
-                  style="width: 40px; height: 40px"
+                <span
+                  class="position-absolute top-50 start-50 translate-middle"
                 >
-                  <span
-                    class="position-absolute top-50 start-50 translate-middle"
-                  >
-                    <i class="bi bi-code-slash text-white"></i>
-                  </span>
-                </div>
-
-                <div class="d-flex flex-column">
-                  <p class="mb-0 fw-semibold">I love Code</p>
-                  <p class="mb-0 fw-6 text-muted">
-                    Passionate about creating elegant solutions
-                  </p>
-                </div>
+                  <i class="bi bi-rocket-takeoff-fill text-white"></i>
+                </span>
               </div>
 
-              <!-- Building dreams -->
-              <div
-                class="d-flex gap-2 align-items-center p-2 bg-light border border-secondary border-opacity-10 rounded"
-                style="width: 95%"
-              >
-                <div
-                  class="position-relative bg-success rounded-circle"
-                  style="width: 40px; height: 40px"
-                >
-                  <span
-                    class="position-absolute top-50 start-50 translate-middle"
-                  >
-                    <i class="bi bi-rocket-takeoff-fill text-white"></i>
-                  </span>
-                </div>
+              <div class="d-flex flex-column">
+                <p class="mb-0 fw-semibold">Building Dreams</p>
+                <p class="mb-0 fw-6 text-muted">
+                  Turning ideas into reality through technology
+                </p>
+              </div>
+            </div>
 
-                <div class="d-flex flex-column">
-                  <p class="mb-0 fw-semibold">Building Dreams</p>
-                  <p class="mb-0 fw-6 text-muted">
-                    Turning ideas into reality through technology
-                  </p>
-                </div>
+            <!-- Learning Daily -->
+            <div
+              class="d-flex gap-2 align-items-center p-2 bg-light border border-secondary border-opacity-10 rounded"
+              style="width: 95%"
+            >
+              <div
+                class="position-relative bg-primary rounded-circle"
+                style="width: 40px; height: 40px"
+              >
+                <span
+                  class="position-absolute top-50 start-50 translate-middle"
+                >
+                  <i class="bi bi-mortarboard-fill text-white"></i>
+                </span>
               </div>
 
-              <!-- Learning Daily -->
-              <div
-                class="d-flex gap-2 align-items-center p-2 bg-light border border-secondary border-opacity-10 rounded"
-                style="width: 95%"
-              >
-                <div
-                  class="position-relative bg-primary rounded-circle"
-                  style="width: 40px; height: 40px"
-                >
-                  <span
-                    class="position-absolute top-50 start-50 translate-middle"
-                  >
-                    <i class="bi bi-mortarboard-fill text-white"></i>
-                  </span>
-                </div>
-
-                <div class="d-flex flex-column">
-                  <p class="mb-0 fw-semibold">Learning Daily</p>
-                  <p class="mb-0 fw-6 text-muted">
-                    Continuous growth and skill development
-                  </p>
-                </div>
+              <div class="d-flex flex-column">
+                <p class="mb-0 fw-semibold">Learning Daily</p>
+                <p class="mb-0 fw-6 text-muted">
+                  Continuous growth and skill development
+                </p>
               </div>
             </div>
           </div>
@@ -166,10 +177,24 @@
       </div>
     </section>
 
+
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+
+    <!-- scripts for aos  -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000, // 🔸 animation lasts 1 second
+        offset: 100, // 🔸 starts animation 100px before reaching the element
+        easing: "ease-in-out", // 🔸 smooth easing
+        once: true, // 🔸 only animate once (no repeat on scroll back)
+      });
+    </script>
   </body>
 </html>
