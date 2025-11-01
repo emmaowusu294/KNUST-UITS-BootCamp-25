@@ -1,0 +1,10 @@
+.card {
+  cursor: pointer;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.142);
+  --bs-border-opacity: 0.9;
+}

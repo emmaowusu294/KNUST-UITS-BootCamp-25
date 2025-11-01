@@ -1,0 +1,9 @@
+.my-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.my-card:hover {
+  transform: scale(1.03);
+  z-index: 10;
+}
