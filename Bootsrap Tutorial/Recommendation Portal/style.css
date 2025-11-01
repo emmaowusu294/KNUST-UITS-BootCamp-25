@@ -1,0 +1,34 @@
+/* This removes the default padding that .form-check
+  uses to make space for the (now hidden) radio button.
+*/
+.custom-radio-item {
+  padding-left: 0;
+}
+
+/* This is the main styling for the clickable label */
+.custom-radio-item .form-check-label {
+  width: 100%; /* Makes the label fill the whole row */
+  cursor: pointer;
+  padding: 0.55rem; /* Add vertical padding */
+
+  /* This is the gray line from the image! */
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}
+
+.form-check {
+  margin-bottom: 0.75rem; /* Space between radio items */
+}
+
+/* This adds a hover effect so the user knows it's clickable */
+.custom-radio-item .form-check-label:hover {
+  background-color: #f8f9fa; /* A very light gray */
+}
+
+/* This is what happens when you click one.
+  It finds the checked input and styles the label next to it.
+*/
+.custom-radio-item input[type="radio"]:checked + .form-check-label {
+  font-weight: bold;
+  color: rgba(var(--bs-success-rgb)); /* Or any color you want (e.g., black) */
+}
