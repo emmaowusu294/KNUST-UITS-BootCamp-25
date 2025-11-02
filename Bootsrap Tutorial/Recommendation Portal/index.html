@@ -96,7 +96,7 @@
 
         <!-- Applicant -- Recommender Relationship  -->
         <div class="bg-white shadow-sm rounded py-4 px-3 mt-3">
-          <p class="text-success fs-4">Referee Information</p>
+          <h4 class="text-success">Referee Information</h4>
 
           <div class="row">
             <div class="col-md-6">
@@ -198,7 +198,7 @@
 
         <!-- Referee Information / Form  -->
         <div class="bg-white shadow-sm rounded py-4 px-3 mt-3">
-          <p class="text-success fs-4">Applicant - Recommender Relationship</p>
+          <h4 class="text-success">Applicant - Recommender Relationship</h4>
 
           <div class="row">
             <div class="col-md-6">
@@ -213,6 +213,7 @@
                   <option value="3">Three</option>
                   <option value="4">Four</option>
                   <option value="5">Five</option>
+                  <option value="6">Six +</option>
                 </select>
               </div>
             </div>
@@ -236,12 +237,13 @@
 
         <!-- Recommendation Details  -->
         <div class="bg-white shadow-sm rounded py-4 px-3 mt-3">
-          <h4 class="mt-4 mb-3">Recommendation Details</h4>
+          <h4 class="mt-4 mb-3 text-success">Recommendation Details</h4>
           <p class="text-muted">
             Please rate the applicant on the qualities listed below based on
             your knowledge of the applicant.
           </p>
 
+          <!-- ratings  -->
           <div class="row">
             <div class="col-md-6 mb-3">
               <h5 class="h6">Motivation</h5>
@@ -374,6 +376,517 @@
                 </div>
               </div>
             </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <h5 class="h6">Initiative</h5>
+
+              <div class="custom-radio-list">
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="initiativeRating"
+                    id="int-a"
+                  />
+                  <label class="form-check-label" for="int-a">
+                    <strong>a.</strong> Below Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="initiativeRating"
+                    id="int-b"
+                  />
+                  <label class="form-check-label" for="int-b">
+                    <strong>b.</strong> Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="initiativeRating"
+                    id="int-c"
+                  />
+                  <label class="form-check-label" for="int-c">
+                    <strong>c.</strong> Above Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="initiativeRating"
+                    id="int-d"
+                  />
+                  <label class="form-check-label" for="int-d">
+                    <strong>d.</strong> Excellent
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="initiativeRating"
+                    id="int-e"
+                  />
+                  <label class="form-check-label" for="int-e">
+                    <strong>e.</strong> Unable to Judge
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <h5 class="h6">Independence</h5>
+
+              <div class="custom-radio-list">
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="IndependenceRating"
+                    id="inde-a"
+                  />
+                  <label class="form-check-label" for="inde-a">
+                    <strong>a.</strong> Below Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="IndependenceRating"
+                    id="inde-b"
+                  />
+                  <label class="form-check-label" for="inde-b">
+                    <strong>b.</strong> Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="IndependenceRating"
+                    id="inde-c"
+                  />
+                  <label class="form-check-label" for="inde-c">
+                    <strong>c.</strong> Above Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="IndependenceRating"
+                    id="inde-d"
+                  />
+                  <label class="form-check-label" for="inde-d">
+                    <strong>d.</strong> Excellent
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="IndependenceRating"
+                    id="inde-e"
+                  />
+                  <label class="form-check-label" for="inde-e">
+                    <strong>e.</strong> Unable to Judge
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <h5 class="h6">Work Ethic</h5>
+
+              <div class="custom-radio-list">
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="workEthicRating"
+                    id="wrke-a"
+                  />
+                  <label class="form-check-label" for="wrke-a">
+                    <strong>a.</strong> Below Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="workEthicRating"
+                    id="wrke-b"
+                  />
+                  <label class="form-check-label" for="wrke-b">
+                    <strong>b.</strong> Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="workEthicRating"
+                    id="wrke-c"
+                  />
+                  <label class="form-check-label" for="wrke-c">
+                    <strong>c.</strong> Above Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="workEthicRating"
+                    id="wrke-d"
+                  />
+                  <label class="form-check-label" for="wrke-d">
+                    <strong>d.</strong> Excellent
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="workEthicRating"
+                    id="wrke-e"
+                  />
+                  <label class="form-check-label" for="wrke-e">
+                    <strong>e.</strong> Unable to Judge
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <h5 class="h6">Work with others</h5>
+
+              <div class="custom-radio-list">
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="workWithOthersRating"
+                    id="wwo-a"
+                  />
+                  <label class="form-check-label" for="wwo-a">
+                    <strong>a.</strong> Below Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="workWithOthersRating"
+                    id="wwo-b"
+                  />
+                  <label class="form-check-label" for="wwo-b">
+                    <strong>b.</strong> Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="workWithOthersRating"
+                    id="wwo-c"
+                  />
+                  <label class="form-check-label" for="wwo-c">
+                    <strong>c.</strong> Above Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="workWithOthersRating"
+                    id="wwo-d"
+                  />
+                  <label class="form-check-label" for="wwo-d">
+                    <strong>d.</strong> Excellent
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="workWithOthersRating"
+                    id="wwo-e"
+                  />
+                  <label class="form-check-label" for="wwo-e">
+                    <strong>e.</strong> Unable to Judge
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <h5 class="h6">Oral Expression</h5>
+
+              <div class="custom-radio-list">
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="oralRating"
+                    id="ore-a"
+                  />
+                  <label class="form-check-label" for="ore-a">
+                    <strong>a.</strong> Below Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="oralRating"
+                    id="ore-b"
+                  />
+                  <label class="form-check-label" for="ore-b">
+                    <strong>b.</strong> Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="oralRating"
+                    id="ore-c"
+                  />
+                  <label class="form-check-label" for="ore-c">
+                    <strong>c.</strong> Above Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="oralRating"
+                    id="ore-d"
+                  />
+                  <label class="form-check-label" for="ore-d">
+                    <strong>d.</strong> Excellent
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="oralRating"
+                    id="ore-e"
+                  />
+                  <label class="form-check-label" for="ore-e">
+                    <strong>e.</strong> Unable to Judge
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <h5 class="h6">Written Expression</h5>
+
+              <div class="custom-radio-list">
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="writtenRating"
+                    id="wre-a"
+                  />
+                  <label class="form-check-label" for="wre-a">
+                    <strong>a.</strong> Below Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="writtenRating"
+                    id="wre-b"
+                  />
+                  <label class="form-check-label" for="wre-b">
+                    <strong>b.</strong> Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="writtenRating"
+                    id="wre-c"
+                  />
+                  <label class="form-check-label" for="wre-c">
+                    <strong>c.</strong> Above Average
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="writtenRating"
+                    id="wre-d"
+                  />
+                  <label class="form-check-label" for="wre-d">
+                    <strong>d.</strong> Excellent
+                  </label>
+                </div>
+
+                <div class="form-check custom-radio-item">
+                  <input
+                    type="radio"
+                    class="visually-hidden"
+                    name="writtenRating"
+                    id="wre-e"
+                  />
+                  <label class="form-check-label" for="wre-e">
+                    <strong>e.</strong> Unable to Judge
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Final Recommendation  -->
+        <div class="bg-white shadow-sm rounded py-4 px-3 mt-3">
+          <h4 class="mb-3 text-success">Overall Recommendation</h4>
+          <p class="text-muted">
+            Do you recommend SYLVIA OFORI for her application to Kwame Nkrumah
+            University of Science and Technology
+          </p>
+          <div class="mb-3">
+            <div class="custom-radio-list">
+              <div class="form-check custom-radio-item">
+                <input
+                  type="radio"
+                  class="visually-hidden"
+                  name="finalRating"
+                  id="rec-a"
+                />
+                <label class="form-check-label" for="rec-a">
+                  <strong>a.</strong> Strongly Recommend
+                </label>
+              </div>
+
+              <div class="form-check custom-radio-item">
+                <input
+                  type="radio"
+                  class="visually-hidden"
+                  name="finalRating"
+                  id="rec-b"
+                />
+                <label class="form-check-label" for="rec-b">
+                  <strong>b.</strong> Recommend
+                </label>
+              </div>
+
+              <div class="form-check custom-radio-item">
+                <input
+                  type="radio"
+                  class="visually-hidden"
+                  name="finalRating"
+                  id="rec-c"
+                />
+                <label class="form-check-label" for="rec-c">
+                  <strong>c.</strong> Recommend with Reservations
+                </label>
+              </div>
+
+              <div class="form-check custom-radio-item">
+                <input
+                  type="radio"
+                  class="visually-hidden"
+                  name="finalRating"
+                  id="rec-d"
+                />
+                <label class="form-check-label" for="rec-d">
+                  <strong>d.</strong> Do not recommend
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comments  -->
+        <div class="bg-white shadow-sm rounded py-4 px-3 mt-3">
+          <h4 class="mb-3 text-success">Comments</h4>
+          <p class="text-muted">
+            Please provide additional comments or upload a document, type your
+            comments, or do both. At least one option should be completed
+          </p>
+          <div class="mb-3">
+            <h3 class="mb-3 text-success"></h3>
+          </div>
+
+          <label for="formFile" class="form-label">Upload a pdf document</label>
+          <input class="form-control" type="file" id="formFile" />
+          <p class="mt-4 fw-medium text-success fs-6">
+            Or type or copy-and-paste your comments here
+          </p>
+          <div class="mb-3">
+            <label
+              for="exampleFormControlTextarea1"
+              class="form-label fw-medium"
+              >Additional Comments</label
+            >
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="6"
+              placeholder="Enter additional comments here..."
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Declaration of statement  -->
+        <div class="bg-white shadow-sm rounded py-4 px-3 mt-3">
+          <h4 class="mb-3 text-success">Declaration of statement</h4>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="checkDefault"
+            />
+            <label class="form-check-label" for="checkDefault">
+              By submitting this recommendation, I,
+              <strong>Mr. PIUS DEBRAH</strong> agree that the information
+              provided is complete and accurate...
+            </label>
           </div>
         </div>
       </div>
